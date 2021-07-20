@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>uk.co._4loop</groupId>
+    <artifactId>design-patterns</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <url>https://www.4loop.co.uk</url>
+    <modules>
+        <module>abstract-factory</module>
+        <module>adapter</module>
+        <module>bridge</module>
+        <module>builder</module>
+        <module>callback</module>
+        <module>chain-of-responsibility</module>
+        <module>command</module>
+        <module>composite</module>
+        <module>decorator</module>
+        <module>interpreter</module>
+        <module>mediator</module>
+        <module>momento</module>
+        <module>observer</module>
+        <module>state</module>
+        <module>visitor</module>
+        <module>strategy</module>
+        <module>template</module>
+        <module>factory</module>
+        <module>prototype</module>
+        <module>singleton</module>
+        <module>facade</module>
+        <module>flyweight</module>
+        <module>proxy</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.31</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
