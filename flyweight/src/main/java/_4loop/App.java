@@ -15,27 +15,32 @@ public class App {
      */
     public static void main(final String[] args) {
 
-        log.info("Creating a compact");
+        log.info("--- Flyweight Pattern Demonstration ---");
+        log.info("The goal is to reuse objects (Flyweights) by sharing their intrinsic state.\n");
+
+        log.info(">> Requesting a COMPACT car for the first time...");
         Car compact = CarFactory.create(CarType.COMPACT);
-        log.info(String.valueOf(compact.hashCode()));
+        log.info("...received object with hash code: {}", compact.hashCode());
         compact.build("red");
 
-        log.info("Creating a family");
+        log.info("\n>> Requesting a FAMILY car for the first time...");
         Car family = CarFactory.create(CarType.FAMILY);
-        log.info(String.valueOf(family.hashCode()));
+        log.info("...received object with hash code: {}", family.hashCode());
         family.build("green");
 
-        log.info("Creating a sports");
+        log.info("\n>> Requesting a SPORTS car for the first time...");
         Car sports = CarFactory.create(CarType.SPORTS);
-        log.info(String.valueOf(sports.hashCode()));
+        log.info("...received object with hash code: {}", sports.hashCode());
         sports.build("blue");
 
+        log.info("\n>> Requesting a COMPACT car for the second time...");
         Car compact2 = CarFactory.create(CarType.COMPACT);
-        log.info(String.valueOf(compact2.hashCode()));
+        log.info("...received object with hash code: {}. Note: It's the same object as the first compact car!", compact2.hashCode());
         compact2.build("green");
 
+        log.info("\n>> Requesting a COMPACT car for the third time...");
         Car compact3 = CarFactory.create(CarType.COMPACT);
-        log.info(String.valueOf(compact3.hashCode()));
+        log.info("...received object with hash code: {}. Still the same shared object!", compact3.hashCode());
         compact3.build("blue");
     }
 

@@ -1,4 +1,4 @@
-package _4loop.momento;
+package _4loop.memento;
 
 public record MessageState(String text) {
 

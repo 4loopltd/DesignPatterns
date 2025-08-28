@@ -2,35 +2,27 @@ package _4loop.flyweight;
 
 import _4loop.flyweight.car.*;
 
-import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class CarFactory {
 
-    private static final HashMap<CarType, Car> cars = new HashMap<>();
+    private static final Map<CarType, Car> cars = new ConcurrentHashMap<>();
 
     public static Car create(CarType model) {
-        Car car = cars.get(model);
-        if (car != null) {
-            return car;
-        }
-
-        switch (model) {
-            case COMPACT:
-                car = new CompactCar();
-                break;
-            case FAMILY:
-                car = new FamilyCar();
-                break;
-            case SPORTS:
-                car = new SportsCar();
-                break;
-            default:
-                break;
-        }
-
-        cars.put(model, car);
-
-        return car;
+        // Use computeIfAbsent for a thread-safe, atomic "get-or-create" operation.
+        // The lambda (k -> ...) is only executed if the key is not already present.
+        return cars.computeIfAbsent(model, k -> {
+            switch (k) {
+                case COMPACT:
+                    return new CompactCar();
+                case FAMILY:
+                    return new FamilyCar();
+                case SPORTS:
+                    return new SportsCar();
+                default:
+                    throw new IllegalArgumentException("Unknown car type: " + k);
+            }
+        });
     }
-
 }

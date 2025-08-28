@@ -17,22 +17,17 @@ public class App {
      */
     public static void main(final String[] args) {
 
-        Subject subject = new ProxySubject();
-
-        log.info("Calling Process first pass");
-        Instant start = Instant.now();
-        subject.process();
-        log.info("Process competed: {}", Duration.between(start, Instant.now()).toMillis());
-
-        log.info("Calling Process second pass");
-        start = Instant.now();
-        subject.process();
-        log.info("Process competed: {}", Duration.between(start, Instant.now()).toMillis());
-
-        log.info("Calling Process third pass");
-        start = Instant.now();
-        subject.process();
-        log.info("Process competed: {}", Duration.between(start, Instant.now()).toMillis());
+        final Subject subject = new ProxySubject();
+        timeAndExecute("first pass", subject);
+        timeAndExecute("second pass", subject);
+        timeAndExecute("third pass", subject);
     }
 
+    private static void timeAndExecute(final String passName, final Subject subject) {
+        log.info("Calling Process {}", passName);
+        final Instant start = Instant.now();
+        subject.process();
+        final long duration = Duration.between(start, Instant.now()).toMillis();
+        log.info("Process completed in {} ms", duration);
+    }
 }

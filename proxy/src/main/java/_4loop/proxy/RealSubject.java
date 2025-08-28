@@ -1,12 +1,16 @@
 package _4loop.proxy;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class RealSubject implements Subject {
 
     public RealSubject() {
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            log.error("Construction sleep interrupted", e);
+            Thread.currentThread().interrupt(); // Preserve the interrupted status
         }
     }
 
@@ -15,9 +19,9 @@ public class RealSubject implements Subject {
         try {
             Thread.sleep(5);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            log.error("Process sleep interrupted", e);
+            Thread.currentThread().interrupt(); // Preserve the interrupted status
         }
     }
-
 
 }

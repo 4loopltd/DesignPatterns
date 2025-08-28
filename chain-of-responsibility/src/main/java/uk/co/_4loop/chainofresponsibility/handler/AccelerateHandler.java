@@ -18,7 +18,7 @@ public class AccelerateHandler extends RequestHandler {
         }
 
         log.info("Passing down the chain -> ");
-        if (Optional.ofNullable(next).isPresent()) {
+        if (next != null) {
             next.handle(request);
         }
     }

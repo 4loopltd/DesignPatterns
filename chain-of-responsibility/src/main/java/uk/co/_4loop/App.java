@@ -10,18 +10,14 @@ import uk.co._4loop.chainofresponsibility.request.StopRequest;
 @Slf4j
 public class App {
 
-    static final RequestHandler accelerate = new AccelerateHandler();
-    static final RequestHandler turnLeft = new TurnLeftHandler();
-    static final RequestHandler turnRight = new TurnRightHandler();
-    static final RequestHandler brake = new BrakeHandler();
     static final RequestHandler chain;
 
     static {
-        accelerate.setNext(turnLeft);
-        turnLeft.setNext(turnRight);
-        turnRight.setNext(brake);
-
-        chain = accelerate;
+        // Build the chain fluently
+        chain = new AccelerateHandler();
+        chain.linkWith(new TurnLeftHandler())
+             .linkWith(new TurnRightHandler())
+             .linkWith(new BrakeHandler());
     }
 
     /**
@@ -31,16 +27,19 @@ public class App {
      */
     public static void main(final String[] args) {
 
-        log.info("Request Go");
+        log.info("--- Chain of Responsibility Pattern Demonstration ---");
+        log.info("Sending different requests to the head of the chain. Each handler will process or pass on the request.\n");
+
+        log.info(">> Sending GoRequest...");
         chain.handle(new GoRequest());
 
-        log.info("Request Left");
+        log.info("\n>> Sending LeftRequest...");
         chain.handle(new LeftRequest());
 
-        log.info("Request Right");
+        log.info("\n>> Sending RightRequest...");
         chain.handle(new RightRequest());
 
-        log.info("Request Stop");
+        log.info("\n>> Sending StopRequest...");
         chain.handle(new StopRequest());
 
     }

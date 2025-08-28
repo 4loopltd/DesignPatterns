@@ -14,21 +14,27 @@ public class App {
      */
     public static void main(final String[] args) {
 
-        Context trafficLight = new Context(new RedState());
-        log.info("State: {}", trafficLight.getState());
+        log.info("--- State Pattern Demonstration ---");
+        log.info("The object's behavior (Context) changes based on its internal state.\n");
 
+        Context trafficLight = new Context(RedState.getInstance());
+        log.info("Initial State: {}", trafficLight.getState());
+
+        log.info("Triggering next state...");
         trafficLight.next();
-        log.info("State: {}", trafficLight.getState());
+        log.info("Current State: {}", trafficLight.getState());
 
+        log.info("Triggering next state...");
         trafficLight.next();
-        log.info("State: {}", trafficLight.getState());
+        log.info("Current State: {}", trafficLight.getState());
 
+        log.info("Triggering next state...");
         trafficLight.next();
-        log.info("State: {}", trafficLight.getState());
+        log.info("Current State: {}", trafficLight.getState());
 
+        log.info("Triggering next state...");
         trafficLight.next();
-        log.info("State: {}", trafficLight.getState());
-
+        log.info("Current State: {}", trafficLight.getState());
 
     }
 

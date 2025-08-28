@@ -1,7 +1,7 @@
 package _4loop;
 
-import _4loop.momento.Caretaker;
-import _4loop.momento.Message;
+import _4loop.memento.Caretaker;
+import _4loop.memento.Message;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

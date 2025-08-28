@@ -21,7 +21,7 @@
         <module>decorator</module>
         <module>interpreter</module>
         <module>mediator</module>
-        <module>momento</module>
+        <module>memento</module>
         <module>observer</module>
         <module>state</module>
         <module>visitor</module>
