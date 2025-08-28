@@ -15,6 +15,20 @@ Design patterns **improve code structure, scalability, and maintainability**. Th
 
 ---
 
+## How to run and test
+
+- Build all modules: mvn -q -DskipTests=false clean test
+- Run a single module’s tests: mvn -q -pl singleton -am test
+- Run demo apps: Use your IDE to run the App class in each module (e.g., singleton\src\main\java\_4loop\App.java).
+
+This repository now includes example JUnit 5 tests in:
+- singleton: verifies each Singleton returns the same instance and checks thread-safety of the double-checked implementation.
+- memento: verifies save and undo behavior restores previous text.
+
+You can replicate these tests for other modules by adding src\test\java and depending on junit-jupiter (already managed in the parent pom).
+
+---
+
 ## Pattern Reference Guide
 
 This comprehensive guide helps you quickly find the right pattern for your needs. Each pattern includes **what it solves**, **when to use it**, and **key benefits**.
